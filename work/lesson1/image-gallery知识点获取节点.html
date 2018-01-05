@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>image gallery</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <style>
+        a{display: block;}
+    </style>
+</head>
+<body>
+<h1>最新游戏</h1>
+<div>
+
+        <a onclick="changs(this);return false" href="http://cdn.tgp.qq.com/tgp/oss-images/oss_5a3ccb7228ac0.jpg" >砸蛋狂欢——砸出Q币，砸出免单</a>
+        <a  onclick="changs(this);return false" href="http://cdn.tgp.qq.com/tgp/oss-images/oss_5a4338b4e163e.jpg" >火源——RPG科幻射击大作</a>
+        <a  onclick="changs(this);return false" href="http://cdn.tgp.qq.com/tgp/oss-images/oss_5a4470e0f0b7e.jpg" >天使帝国4</a>
+        <a  onclick="changs(this);return false" href="http://cdn.tgp.qq.com/tgp/oss-images/oss_5a44e645e0e4f.jpg" >汐——欲罢不能的古风动作游戏</a>
+        <a  onclick="changs(this);return false" href="http://cdn.tgp.qq.com/tgp/oss-images/oss_5a3ccb559cc01.jpg" >流放之路——立即预约抢号</a>
+
+</div>
+
+    <div id="imgdiv"><img src="http://cdn.tgp.qq.com/tgp/oss-images/oss_5a3ccb7228ac0.jpg">
+    <img src="http://cdn.tgp.qq.com/tgp/oss-images/oss_5a3ccb7228ac0.jpg"></div>
+    <div id="imgdiv1"><img src="http://cdn.tgp.qq.com/tgp/oss-images/oss_5a3ccb7228ac0.jpg"><p>fdafdafda</p></div>
+
+
+</body>
+<script>
+/*    function changs(name,n){
+        for(i=1;i<=n;i++){
+            var imgshow=document.getElementsByTagName("img");
+            var liTab=document.getElementById(name+i);
+            var liHref=liTab.getAttribute("title");
+            console.log(liHref)
+            imgshow[0].setAttribute("src","liHref")
+        }
+    }*/
+function changs(node){
+    var liHref=node.getAttribute("href");
+    var imgshow1=document.getElementById("imgdiv1");
+    var imgshow=imgshow1.getElementsByTagName("img")[0];//获取指定ID下面的标签
+   // console.log(imgshow)//控制台看输出结果
+    imgshow.setAttribute("src",liHref);
+
+}
+
+</script>
+</html>
