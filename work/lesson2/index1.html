@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Explaining the Document Object Model</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/typography.css" />
+</head>
+
+<body>
+  <h1>What is the Document Object Model?</h1>
+  <div class="article">
+      The
+      <abbr >W3C</abbr> defines the
+      <abbr >DOM</abbr> as:
+
+    <blockquote cite="http://www.w3.org/DOM/">
+      <p>
+        A platform- and language-neutral interface that will allow programs and scripts to dynamically access and update the content, structure and style of documents.
+      </p>
+    </blockquote>
+    <p>
+      It is an
+      <abbr>API</abbr>that can be used to navigate
+      <abbr >HTML</abbr> and
+      <abbr >XML</abbr> documents.
+    </p>
+  </div>
+<div id="tips">
+<!--想把内容插入标签里的<p>里-->
+
+
+</div>
+  <div ></div>
+<script>
+var tit={
+    W3C:'World Wide Web Consortium',
+    DOM:'Document Object Model',
+    API:'Application Programming Interface',
+    HTML:'World Wide Web Consortium',
+    XML:'eXtensible Markup Language',
+
+}
+var txt=document.getElementsByTagName("abbr");
+
+
+for(i=0; i<txt.length;i++){
+    var txtcont=txt[i].innerHTML;
+    //console.log(txtcont,":",tit[txtcont])
+    document.write(txtcont,":",tit[txtcont],"</br>")
+    var textNode=document.createTextNode(txtcont);
+    var textNode2=document.createTextNode(tit[txtcont]);
+    console.log(textNode2)
+    //document.querySelector('#tips').appendChild(textNode2)
+
+}
+
+
+
+</script>
+
+</body>
+
+</html>

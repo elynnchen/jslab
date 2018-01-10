@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  .cont{background: #f0f0f0;padding:10px;}
+  .cont p span{padding-right:10px;width:70px;display: inline-block;}
+</style>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Explaining the Document Object Model</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/typography.css" />
+</head>
+
+<body>
+  <h1>What is the Document Object Model?</h1>
+  <div class="article">
+    <p>
+      The
+      <abbr title="World Wide Web Consortium">W3C</abbr> defines the
+      <abbr title="Document Object Model">DOM</abbr> as:
+    </p>
+    <blockquote cite="http://www.w3.org/DOM/">
+      <p>
+        A platform- and language-neutral interface that will allow programs and scripts to dynamically access and update the content, structure and style of documents.
+      </p>
+    </blockquote>
+    <p>
+      It is an
+      <abbr title="Application Programming Interface">API</abbr>
+      that can be used to navigate
+      <abbr title="HyperText Markup Language">HTML</abbr> and
+      <abbr title="eXtensible Markup Language">XML</abbr> documents.
+    </p>
+  </div>
+<div >
+
+
+</div>
+  <div class="cont"></div>
+<script>
+    var txt=document.getElementsByTagName("abbr");
+
+    for(i=0; i<txt.length;i++){
+       //var tit=txt[i].getAttribute("title") 相当于下面一代码
+        var titH=txt[i].title;
+        var words=txt[i].innerHTML;
+        console.log(words,titH)
+
+        //创建文字节点
+        var t=document.createTextNode(titH)
+        var t1=document.createTextNode(words)
+
+        //创建标签
+        var box =document.querySelector(".cont")
+        var tp=document.createElement("p");
+        var tspan=document.createElement("span");
+
+        //插入内容
+        box.appendChild(tp)
+        tp.appendChild(tspan)
+        tp.appendChild(t)
+        tspan.appendChild(t1)
+
+    }
+
+</script>
+
+</body>
+
+</html>
