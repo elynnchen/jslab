@@ -2,7 +2,7 @@
 <html lang="en">
 <style>
   .cont{background: #f0f0f0;padding:10px;}
-  .cont p span{padding-right:10px;width:70px;display: inline-block;}
+  .cont p span{padding-right:10px;width:40px;display: inline-block;}
 </style>
 
 <head>
@@ -32,37 +32,51 @@
       <abbr title="eXtensible Markup Language">XML</abbr> documents.
     </p>
   </div>
-<div >
 
-
-</div>
   <div class="cont"></div>
 <script>
     var txt=document.getElementsByTagName("abbr");
 
     for(i=0; i<txt.length;i++){
        //var tit=txt[i].getAttribute("title") 相当于下面一代码
-        var titH=txt[i].title;
-        var words=txt[i].innerHTML;
-        console.log(words,titH)
+      var summary=txt[i].title;
+      var titles=txt[i].innerHTML;
+/*       console.log(titles,summary)*/
 
         //创建文字节点
-        var t=document.createTextNode(titH)
-        var t1=document.createTextNode(words)
+        var content =document.querySelector(".cont")
+        //创建标签和样式名
+        var box=createTag("div", "box","");
+        var tp=createTag("p", "", summary );
+        var tspan=createTag("span", "",  titles);
 
-        //创建标签
-        var box =document.querySelector(".cont")
-        var tp=document.createElement("p");
-        var tspan=document.createElement("span");
 
         //插入内容
-        box.appendChild(tp)
-        tp.appendChild(tspan)
-        tp.appendChild(t)
-        tspan.appendChild(t1)
+        content.appendChild(box);
+        box.appendChild(tp);
+        tp.appendChild(tspan); //插入标签
+        appendFrist(tp,tspan);// 把span插入到P的第一个
+        console.log(box)
 
     }
 
+
+    //函数: 创建标签并赋予样式名函数
+    function createTag(tag, tagname, tword) {
+        var ttag =document.createElement(tag)
+        if(tagname){
+            ttag.className=tagname
+        }
+        var t=document.createTextNode(tword);
+        ttag.appendChild(t);//插入内容
+        return ttag
+    }
+
+    //函数: 插入标签到第一个子元素
+  function appendFrist(parent,child) {
+        parent.insertBefore(child,parent.firstChild)
+
+  }
 </script>
 
 </body>
