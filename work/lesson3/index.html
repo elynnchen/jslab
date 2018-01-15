@@ -73,7 +73,7 @@
       while(element.tagName !=='TR'){
           if(element === testTable) {
               element=null;
-              break}
+              return}
           element=element.parentNode
       }
 
@@ -88,7 +88,7 @@
      while(element.tagName !=='TR'){
          if(element === testTable) {
              element=null;
-             break}
+             return}
          element=element.parentNode
      }
      element.style.fontWeight="normal"
