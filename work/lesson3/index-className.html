@@ -6,7 +6,9 @@
   <title>Explaining the Document Object Model</title>
   <link rel="stylesheet" type="text/css" media="screen" href="styles/format.css" />
   <style >
-
+.tr-bg{background: #ccc;}
+.tr-hover{font-weight: bold; cursor: pointer;background: #f4eab7  }
+.tr-hoverout{font-weight: normal; cursor: pointer;  }
   </style>
 </head>
 
@@ -60,44 +62,43 @@
   </table>
 </body>
 <script>
- var Trbg= testTable.querySelectorAll("tbody tr")
+    var Trbg= testTable.querySelectorAll("tbody tr")
     for(i=0;i<Trbg.length;i++){
         var obb=i+1;
         if(obb%2===0){
-            Trbg[i].style.backgroundColor="#ccc"
+            Trbg[i].className="tr-bg"
         }
-  }
+    }
 
-var listnerdiv=testTable.querySelector("tbody")
- console.log( listnerdiv)
- listnerdiv.addEventListener("mouseover",function (e) {
-      var element=e.target;
-      while(element.tagName !=='TR'){
-          if(element === testTable) {
-              element=null;
-              return}
-          element=element.parentNode
-      }
+    var listnerdiv=testTable.querySelector("tbody")
+    listnerdiv.addEventListener("mouseover",function (e) {
+        var element=e.target;
+        while(element.tagName !=='TR'){
+            if(element === testTable) {
+                element=null;
+                return}
+            element=element.parentNode
+        }
 
-      element.style.fontWeight="bold";
-      element.style.cursor="pointer"
+        element.classList.add('tr-hover')
+        element.classList.remove('tr-hoverout')
 
- })
+    })
 
 
- listnerdiv.addEventListener("mouseout",function (e) {
-     var element=e.target;
-     while(element.tagName !=='TR'){
-         if(element === testTable) {
-             element=null;
-             return}
+    listnerdiv.addEventListener("mouseout",function (e) {
+        var element=e.target;
+        while(element.tagName !=='TR'){
+            if(element === testTable) {
+                element=null;
+                return}
+            element=element.parentNode
+        }
+        element.classList.add('tr-hoverout')
+        element.classList.remove('tr-hover')
 
-         element=element.parentNode
-     }
-     element.style.fontWeight="normal"
-     element.style.cursor="pointer"
+    })
 
- })
 
 
 </script>
