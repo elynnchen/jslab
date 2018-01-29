@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--要求统计每个英文字母出现的次数-->
+<form>
+    <input type="text" name="name" id="nn" />
+    <input type="button" name="button" value="获取" onclick="print()" />
+</form>
+<script>
+
+function print(){
+
+        var str=document.getElementById("nn").value;
+        var hash={}
+
+        for(var i=0;i<str.length;i++){
+            var letter=str[i]
+            if(letter in hash){
+                hash[letter]+=1 //访问hash中叫做 letter的Key
+                //hash.letter+=1//访问hash中叫做“letter”的Key
+            }
+            else {
+                hash[letter]=1
+            }
+        }
+        console.log(hash)
+        alert(hash);
+ }
+// 不能在页面中显示出来
+</script>
+</body>
+</html>

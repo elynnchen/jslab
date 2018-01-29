@@ -19,8 +19,8 @@
       <p id="player-controls">
         <a href="#" id="play" onclick="play()">播放</a>
         <a href="#" id="skip" onclick="skip()">跳到视频第20秒</a>
-        <a href="#" id="playFast" onclick="playFast(5)">快进</a>
-        <a href="#" id="playSlow" onclick="playSlow(5)">快退</a>
+        <a href="#" id="playFast" onclick="playFast(0.5)">快进<i></i></a>
+        <a href="#" id="playSlow" onclick="playSlow(0.25)">快退<i></i></a>
         <a href="#" id="volUp" onclick="volUp(0.2)">增大音量</a>
         <a href="#" id="volDown" onclick="volDown(0.2)">减小音量</a>
         <a href="#" id="quite" onclick="quite(-5)">禁音</a>
@@ -30,17 +30,6 @@
 
 <script type="text/javascript">
     var video=document.getElementById("player-video");
-/*    var player=document.getElementById("player-controls");
-
-    player.addEventListener("onclick",function (e) {
-
-        var click_e =e.target;
-
-
-
-    })*/
-
-
 
    function play() {
        if(video.paused){
@@ -53,18 +42,81 @@
     function skip() {
         video.currentTime = 20;
     }
+
+
+
+/*快进*/
+    var x=0;
     function playFast(value) {
-        video.currentTime += value;
+        var rate_num=document.querySelector('#playFast i')
+        x=x+1;
+       if(x<=3){
+           rate_num.innerHTML=x;
+           video.playbackRate+=value;
+       }
+       else {
+         x=0;
+           rate_num.innerHTML="";
+           video.playbackRate=1;
+
+
+       }
+        if(video.paused){
+            video.play();
+        }
+
+
+
     }
+
+
+
+
+
+    /*快退*/
+    var x=0;
     function playSlow(value) {
-        video.currentTime -= value;
+        var rate_num=document.querySelector('#playSlow i')
+        x=x+1;
+        if(x<=3){
+            rate_num.innerHTML=x;
+            video.playbackRate-=value;
+        }
+        else {
+            x=0;
+            rate_num.innerHTML="";
+            video.playbackRate=1;
+
+
+        }
+        if(video.paused){
+            video.play();
+        }
+
+
+
     }
+
+
+
     function volUp(value) {
-        video.volume += value;
+        var cur_vol=video.volume;
+        var vols=cur_vol+value;
+        if(vols>=0 && vols<=1) { video.volume += value;}
+        else {
+            if(vols>=0){cur_vol.volume=0}
+            else if(vols>=1){cur_vol.volume=1}
+        }
+
     }
     function volDown(value) {
-       if(value<0) {console.log("超过范围了");}
-       else {  video.volume -= value;}
+        var cur_vol=video.volume;
+        var vols=cur_vol-value;
+       if(vols>=0 && vols<=1) { video.volume -= value;}
+       else {
+        if(vols>=0){cur_vol.volume=0}
+        else if(vols>=1){cur_vol.volume=1}
+       }
     }
     function quite() {
         if(video.muted){

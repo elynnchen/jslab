@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .box{width:500px;height:500px;display: block; background: #ccc;}
+        .box p{width:300px;height:300px;display: block;}
+    </style>
+</head>
+<body>
+<p> 题目：选择下拉框里的颜色，让class='box'里的 p标签背景改变颜色</p>
+<select id="color">
+    <option value="" disabled selected>请选择颜色</option>
+    <option value="red">红色</option>
+    <option value="orange">橙色</option>
+    <option value="yellow">黄色</option>
+    <option value="green">绿色</option>
+    <option value="blue">蓝色</option>
+</select>
+<div class="box">
+    <p></p>
+</div>
+</body>
+
+<script>
+    var colors=document.querySelector("#color")
+    colors.onchange=function () {
+        console.log(colors.value)
+        document.querySelector(".box p").style.backgroundColor=(colors.value)
+    }
+</script>
+</html>

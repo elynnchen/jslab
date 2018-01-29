@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--要求统计每个英文字母出现的次数-->
+<div class="user"><input value=""></div>
+
+</body>
+<script>
+var string='i am elynnchen, i am 18 yeas old'
+var hash={}
+for(var i=0;i<string.length;i++){
+    var letter=string[i]
+    if(letter in hash){
+            hash[letter]+=1 //访问hash中叫做 letter的Key
+           //hash.letter+=1//访问hash中叫做“letter”的Key
+    }
+    else {
+        hash[letter]=1
+    }
+}
+console.log(hash)
+</script>
+</html>

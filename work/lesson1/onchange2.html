@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .box{width:500px;height:500px;display: block; background: #ccc;}
+        .box p{width:300px;height:300px;display: block;}
+    </style>
+</head>
+<body>
+<p> 题目：选择下拉框里的颜色，让class='box'里的 p标签背景改变颜色</p>
+<div class="selectbox">
+    <select id="mySelect">
+        <option value="green">绿色</option>
+        <option value="red">红色</option>
+        <option value="orange">橙色</option>
+    </select>
+    <input type="button" onclick="getValue()"
+           value="click">
+</div>
+<div class="box" id="box2">
+    <p></p>
+</div>
+</body>
+
+<script>
+    function getValue()
+    {
+        //从document对象中，获取select标签
+        var a=document.getElementById("mySelect");
+        //select标签获取的值其实是一个数组--a.options[]; 然后，选定项的下标是--a.selectedIndex
+        var b=a.value;
+        var box=document.getElementById("box2");
+        //var box=document.getElementsByClassName=("box");
+        var boxp=box.getElementsByTagName("p")[0];
+        boxp.style.backgroundColor=b;
+        boxp.style.borderColor=b;
+        console.log(b);
+    }
+</script>
+</html>
