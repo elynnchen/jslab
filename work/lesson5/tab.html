@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <style >
+    body{padding:10px;margin:0;}
+    ul,ol{list-style: none;padding:0px;margin:0;}
+
+    .tabs{display: flex}
+    .tabs>li{
+      border:1px solid black;
+      padding:5px;
+    }
+    .tabs>li.cur{
+      background: red;
+    }
+
+    .tab-content{
+      width:100px;
+      height:100px;
+      overflow: hidden;
+      background: #f1f1f1;
+    }
+    .tab-content>li{
+      float:left;
+      display: none;
+      width:100px;
+      min-height: 100px;
+      justify-content: center;
+      align-items: center;
+    }
+    .tab-content>li.cur{
+      display:block;
+      background: #ccc;
+    }
+
+  </style>
+
+
+</head>
+
+<body>
+<div class="tabs-container">
+
+    <ol class="tabs">
+      <li>tab1</li>
+      <li>tab2</li>
+    </ol>
+
+
+<div class="">
+  <ol class="tab-content">
+     <li class="cur">内容一</li>
+     <li>内容二</li>
+  </ol></div>
+</div>
+
+
+
+</body>
+<script>
+let tabItems=document.querySelectorAll(".tabs>li")
+  tabItems[0].addEventListener('click',function (e) {
+      //e.currentTarget===tabItems[0]
+      let li=e.currentTarget
+      li.classList.add('cur')
+      //e.currentTarget.classList.add('cur')
+      let next=li.nextSibling
+
+
+      while (next.nodeType===3){
+          next=next.nextSibling
+      }
+      next.classList.remove('cur')
+
+      li.parentNode.parentNode.children[1].children[0].classList.add('cur')
+      li.parentNode.parentNode.children[1].children[1].classList.remove('cur')
+
+  })
+
+tabItems[1].addEventListener('click',function (e) {
+
+    let li=e.currentTarget
+    li.classList.add('cur')
+    let prev=li.previousSibling
+
+    while (prev.nodeType===3){
+        prev=prev.previousSibling
+    }
+    prev.classList.remove('cur')
+
+    li.parentNode.parentNode.children[1].children[0].classList.remove('cur')
+    li.parentNode.parentNode.children[1].children[1].classList.add('cur')
+
+
+})
+
+
+
+
+
+
+</script>
+
+</html>
